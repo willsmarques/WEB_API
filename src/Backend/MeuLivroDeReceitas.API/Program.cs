@@ -1,3 +1,7 @@
+using MeuLivroDeReceitas.Domain.Extension;
+using MeuLivroDeReceitas.Infrastructure;
+using MeuLivroDeReceitas.Infrastructure.Migrations;
+
 namespace MeuLivroDeReceitas.API
 {
     public class Program
@@ -12,6 +16,8 @@ namespace MeuLivroDeReceitas.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddRespositorio(builder.Configuration);
 
             var app = builder.Build();
 
@@ -29,7 +35,20 @@ namespace MeuLivroDeReceitas.API
 
             app.MapControllers();
 
+            AtualizarBaseDados();
+
             app.Run();
+
+            void AtualizarBaseDados()
+            {
+               var conexao      = builder.Configuration.GetConexao();
+               var nomeDatabase = builder.Configuration.GetNomeDatabase();
+              
+               Database.CriarDataBase(conexao, nomeDatabase);
+
+               app.MigrateBancoDeDados();
+
+            }
         }
     }
 }
