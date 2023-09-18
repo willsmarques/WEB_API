@@ -1,17 +1,13 @@
 ﻿using MeuLivroDeReceitas.Domain.Entidades;
 using MeuLivroDeReceitas.Domain.Repositorio;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio
 {
-    internal class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnlyRepositorio
+    internal class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio,IUsuarioReadOnlyRepositorio 
     {
         private readonly MeuLivroDeReceitaContext _context;
+
         public UsuarioRepositorio(MeuLivroDeReceitaContext contexto)
         {
             _context = contexto;
