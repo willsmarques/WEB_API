@@ -1,6 +1,8 @@
-﻿namespace MeuLivroDeReceitas.Domain.Entidades;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Usuario
+namespace MeuLivroDeReceitas.Domain.Entidades;
+
+public class Usuario: EntidadeBase
 {
     public string Nome { get; set; }
     public string Email { get; set; }
