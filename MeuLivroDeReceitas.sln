@@ -11,23 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{7E4F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{31C93AE6-5D0A-46B0-9C56-3C8BC7D8644E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Comunicação", "src\Shared\MeuLivroDeReceitas.Comunicação\MeuLivroDeReceitas.Comunicação.csproj", "{146884E6-6B08-4DFA-B21F-0E8DC9BBDD80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Comunicacao", "src\Shared\MeuLivroDeReceitas.Comunicação\MeuLivroDeReceitas.Comunicacao.csproj", "{146884E6-6B08-4DFA-B21F-0E8DC9BBDD80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Exceptions", "src\Shared\MeuLivroDeReceitas.Exceptions\MeuLivroDeReceitas.Exceptions.csproj", "{3F3F8D18-54FB-46EC-8519-F7E48057F321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Exceptions", "src\Shared\MeuLivroDeReceitas.Exceptions\MeuLivroDeReceitas.Exceptions.csproj", "{3F3F8D18-54FB-46EC-8519-F7E48057F321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Application", "src\Backend\MeuLivroDeReceitas.Application\MeuLivroDeReceitas.Application.csproj", "{85D58C94-07CD-4E99-8E9E-532EB08C5E04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Application", "src\Backend\MeuLivroDeReceitas.Application\MeuLivroDeReceitas.Application.csproj", "{85D58C94-07CD-4E99-8E9E-532EB08C5E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Domain", "src\Backend\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj", "{F462D2ED-0B5F-47FB-9770-FA93888542DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Domain", "src\Backend\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj", "{F462D2ED-0B5F-47FB-9770-FA93888542DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Infrastructure", "src\Backend\MeuLivroDeReceitas.Infrastructure\MeuLivroDeReceitas.Infrastructure.csproj", "{2F21F357-9A2C-4B14-A75C-C480448064F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Infrastructure", "src\Backend\MeuLivroDeReceitas.Infrastructure\MeuLivroDeReceitas.Infrastructure.csproj", "{2F21F357-9A2C-4B14-A75C-C480448064F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.API", "src\Backend\MeuLivroDeReceitas.API\MeuLivroDeReceitas.API.csproj", "{14D2B810-6EFA-4312-814A-0D7F384F53C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.API", "src\Backend\MeuLivroDeReceitas.API\MeuLivroDeReceitas.API.csproj", "{14D2B810-6EFA-4312-814A-0D7F384F53C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{717679C0-2FC4-4BA2-8AE7-70B898047833}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{717679C0-2FC4-4BA2-8AE7-70B898047833}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCase.Test", "tests\UseCase.Test\UseCase.Test.csproj", "{AB73D023-BBDD-418E-AFC4-CE046588D696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCase.Test", "tests\UseCase.Test\UseCase.Test.csproj", "{AB73D023-BBDD-418E-AFC4-CE046588D696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "tests\WebApi.Test\WebApi.Test.csproj", "{F397BFE7-D054-4E60-A52E-8F053E003329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Test", "tests\WebApi.Test\WebApi.Test.csproj", "{F397BFE7-D054-4E60-A52E-8F053E003329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
