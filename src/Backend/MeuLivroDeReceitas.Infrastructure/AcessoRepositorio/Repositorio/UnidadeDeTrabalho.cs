@@ -12,6 +12,11 @@ public sealed class UnidadeDeTrabalho : IDisposable,IUnidadeDeTrabalho
         Dispose(true);
     }
 
+    public UnidadeDeTrabalho(MeuLivroDeReceitaContext contexto)
+    {
+        _contexto = contexto;
+    }
+
     public async Task Commit()
     {
         await _contexto.SaveChangesAsync();
