@@ -26,7 +26,7 @@ public class RegistrarUsuarioValidator : AbstractValidator<RequisicaoRegistrarUs
         {
             RuleFor(c => c.Telefone).Custom((telefone, contexto) =>
             {
-                string padraoTelefone = "[0-9]{2} [1-9]{1}-[0-9]{4}";
+                string padraoTelefone = "[0-9]{2} [1-9]{1} [0-9]{4}-[0-9]{4}";
                 var isMatch = Regex.IsMatch(telefone, padraoTelefone);
                 if (!isMatch)
                 {
