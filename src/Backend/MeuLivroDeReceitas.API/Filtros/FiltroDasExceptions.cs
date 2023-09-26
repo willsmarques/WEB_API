@@ -17,6 +17,7 @@ public class FiltroDasExceptions : IExceptionFilter
         }
         else
         {
+            LancarErroDesconhecido(context);
 
         };
 
@@ -31,7 +32,7 @@ public class FiltroDasExceptions : IExceptionFilter
     private void TratarErrosDeValidacaoException(ExceptionContext context)
     {
         var erroDeValidacaoException = context.Exception as ErroDeValidacaoException;
-        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         context.Result = new ObjectResult(new RespostaErroJson(erroDeValidacaoException.MessagensDeErro));
     }
     private void LancarErroDesconhecido(ExceptionContext context)
