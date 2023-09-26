@@ -1,12 +1,12 @@
 ﻿using MeuLivroDeReceitas.Domain.Repositorio;
 
-namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 
-public sealed class UnidadeDeTrabalho : IDisposable,IUnidadeDeTrabalho
+public sealed class UnidadeDeTrabalho : IDisposable, IUnidadeDeTrabalho
 {
     private readonly MeuLivroDeReceitaContext _contexto;
     private bool _disposed;
-    
+
     public void Dispose()
     {
         Dispose(true);
