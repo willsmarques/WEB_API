@@ -17,6 +17,7 @@ public class FiltroDasExceptions : IExceptionFilter
         }
         else
         {
+            LancarErroDesconhecido(context);
 
         };
 
@@ -27,12 +28,24 @@ public class FiltroDasExceptions : IExceptionFilter
         {
             TratarErrosDeValidacaoException(context);
         }
+        else if (context.Exception is LoginInvalidoException)
+        {
+
+        }
     }
     private void TratarErrosDeValidacaoException(ExceptionContext context)
     {
         var erroDeValidacaoException = context.Exception as ErroDeValidacaoException;
-        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         context.Result = new ObjectResult(new RespostaErroJson(erroDeValidacaoException.MessagensDeErro));
+    }
+
+    private void TratarLoginExection(ExceptionContext context)
+    {
+        var erroLogin = context.Exception as LoginInvalidoException;
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+        context.Result = new ObjectResult(new RespostaErroJson(erroLogin.Message));
+
     }
     private void LancarErroDesconhecido(ExceptionContext context)
     {
