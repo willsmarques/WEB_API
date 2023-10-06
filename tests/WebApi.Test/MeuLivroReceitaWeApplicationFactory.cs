@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using WebApi.Test;
 
 public class MeuLivroReceitaWeApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
 {
+    private MeuLivroDeReceitas.Domain.Entidades.Usuario _usuario;
+    private string _senha;
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Test")
@@ -30,7 +33,21 @@ public class MeuLivroReceitaWeApplicationFactory<TStartup> : WebApplicationFacto
                 var scopeService = scope.ServiceProvider;
 
                 var database = scopeService.GetRequiredService<MeuLivroDeReceitaContext>();
+
+                database.Database.EnsureDeleted();
+
+               (_usuario,_senha) =  ContextSeedInMemoty.Seed(database);
             });
+    }
+
+    public MeuLivroDeReceitas.Domain.Entidades.Usuario RecuperarUsuario()
+    {
+        return _usuario;
+    }
+
+    public string RecuperarSenha()
+    {
+        return _senha;
     }
 
 }

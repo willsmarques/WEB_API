@@ -1,4 +1,5 @@
-﻿using MeuLivroDeReceitas.Domain.Repositorio;
+﻿using MeuLivroDeReceitas.Domain.Entidades;
+using MeuLivroDeReceitas.Domain.Repositorio;
 using Moq;
 
 namespace Utilitario.ParaOsTestes.Repositorios;
@@ -21,6 +22,12 @@ public class UsuarioReadOnlyRepositorioBuilder
         if (!string.IsNullOrEmpty(email))
             _repositorio.Setup(i => i.ExisteUsuarioComEmail(email)).ReturnsAsync(true);
         
+        return this;
+    }
+
+    public UsuarioReadOnlyRepositorioBuilder RecuperarPorEmailSenha(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
+    {
+        _repositorio.Setup(i => i.RecuperarPorEmailSenha(usuario.Email, usuario.Senha)).ReturnsAsync(usuario);
         return this;
     }
 

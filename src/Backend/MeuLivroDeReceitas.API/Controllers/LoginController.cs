@@ -1,6 +1,6 @@
-﻿using MeuLivroDeReceitas.Application.UseCase.Login.FazerLogin;
+﻿using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
-using MeuLivroDeReceitas.Comunicacao.Resposta;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.API.Controllers
