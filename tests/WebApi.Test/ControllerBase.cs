@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text;
 using Xunit;
 
-namespace WebApi.Test.V1;
+namespace WebApi.Test;
 
 public class ControllerBase : IClassFixture<MeuLivroReceitaWeApplicationFactory<Program>>
 {
@@ -19,8 +19,8 @@ public class ControllerBase : IClassFixture<MeuLivroReceitaWeApplicationFactory<
 
     protected async Task<HttpResponseMessage> PostRequest(string metodo, object body)
     {
-       var jsonString = JsonConvert.SerializeObject(body);
-      
+        var jsonString = JsonConvert.SerializeObject(body);
+
         return await _client.PostAsync(metodo, new StringContent(jsonString, Encoding.UTF8, "application/json"));
     }
 

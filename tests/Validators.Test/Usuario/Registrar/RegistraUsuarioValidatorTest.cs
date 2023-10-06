@@ -23,6 +23,21 @@ public  class RegistraUsuarioValidatorTest
     }
 
     [Fact]
+    public void Validar_Erro_Nome_Vazio()
+    {
+        var validator = new RegistrarUsuarioValidator();
+
+        var requisicao = RequisicaoRegistraUsuarioBuilder.Contruir();
+        requisicao.Nome = string.Empty;
+
+        var resultado = validator.Validate(requisicao);
+
+        resultado.IsValid.Should().BeFalse();
+        resultado.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.NOME_VAZIO_EMBRANCO));
+
+    }
+
+    [Fact]
     public void Validar_Erro_Email_Vazio()
     {
         var validator = new RegistrarUsuarioValidator();
