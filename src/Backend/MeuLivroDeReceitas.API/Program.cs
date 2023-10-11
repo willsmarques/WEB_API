@@ -1,10 +1,11 @@
 using MeuLivroDeReceitas.API.Filtros;
+using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Application.Servicos.Automapper;
 using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Infrastructure;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.Migrations;
-using System.Security.Cryptography.X509Certificates;
+
 
 namespace MeuLivroDeReceitas.API;
 
@@ -17,6 +18,8 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddRouting(option => option.LowercaseUrls = true);
+
+        builder.Services.AddHttpContextAccessor();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,6 +35,9 @@ public class Program
           {
               cfg.AddProfile(new AutoMapperConfiguracao());
           }).CreateMapper());
+
+
+        builder.Services.AddScoped<UsuarioAutenticadoAtribute>();
 
         var app = builder.Build();
 

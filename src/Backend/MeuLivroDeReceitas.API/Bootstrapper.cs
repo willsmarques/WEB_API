@@ -1,11 +1,8 @@
-﻿using MeuLivroDeReceitas.API.Controllers;
-using MeuLivroDeReceitas.Application.Servicos.Criptografia;
+﻿using MeuLivroDeReceitas.Application.Servicos.Criptografia;
 using MeuLivroDeReceitas.Application.Servicos.Token;
+using MeuLivroDeReceitas.Application.UseCase.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Application.UseCase.Usuario.Registrar;
 using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using static System.Collections.Specialized.BitVector32;
 
 namespace MeuLivroDeReceitas.API;
 
