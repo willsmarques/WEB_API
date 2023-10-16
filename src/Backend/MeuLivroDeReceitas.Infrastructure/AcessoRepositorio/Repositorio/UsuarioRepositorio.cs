@@ -47,5 +47,10 @@ namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio
         {
             _context.Usuarios.Update(usuario);
         }
+
+        void IUsuarioWriteOnlyRepositorio.RecuperarPorId(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
