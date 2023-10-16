@@ -15,7 +15,7 @@ namespace UseCase.Test.Usuario.Registrar;
 public  class RegistrarUsuarioUseCaseTest
 {
     [Fact]
-    public async Task validar_sucesso()
+    public async Task Validar_sucesso()
     {
         var requisicao = RequisicaoRegistraUsuarioBuilder.Contruir();
 
@@ -28,7 +28,7 @@ public  class RegistrarUsuarioUseCaseTest
     }
 
     [Fact]
-    public async Task validar_Erro_Email_Ja_Registrado()
+    public async Task Validar_Erro_Email_Ja_Registrado()
     {
         var requisicao = RequisicaoRegistraUsuarioBuilder.Contruir();
 
@@ -42,7 +42,7 @@ public  class RegistrarUsuarioUseCaseTest
     }
 
     [Fact]
-    public async Task validar_Erro_Email_Vazio()
+    public async Task Validar_Erro_Email_Vazio()
     {
         var requisicao = RequisicaoRegistraUsuarioBuilder.Contruir();
         requisicao.Email = string.Empty;
