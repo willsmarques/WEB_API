@@ -56,7 +56,7 @@ public  class RegistrarUsuarioUseCaseTest
         
     }
 
-    private RegistrarUsuarioUseCase CriarUseCase(string email = "")
+    private static RegistrarUsuarioUseCase CriarUseCase(string email = "")
     {
         var mapper = MapperBuilder.Instancia();
         var repositorio = UsuarioWriteOnlyRepositorioBuilder.Instancia().Construir();

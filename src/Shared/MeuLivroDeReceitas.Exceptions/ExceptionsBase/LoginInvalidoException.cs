@@ -9,4 +9,6 @@ public class LoginInvalidoException : MeuLivroDeReceitasExeception
     {
     }
 
+    protected LoginInvalidoException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
 }
