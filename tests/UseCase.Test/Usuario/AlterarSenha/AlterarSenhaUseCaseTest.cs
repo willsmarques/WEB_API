@@ -32,6 +32,24 @@ public class AlterarSenhaUseCaseTest
     }
 
     [Fact]
+    public async Task Validar_Erro_SenhaAtual_Invalida()
+    {
+        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        var useCase = CriarUseCase(usuario);
+
+        var requisicao = RequisicaoAlterarSenhaUsuarioBuilder.Construir();
+        requisicao.SenhaAtual = "senhaInvalida";
+
+        Func<Task> acao = async () =>
+        {
+            await useCase.Executar(requisicao);
+        };
+
+        await acao.Should().ThrowAsync<ErroDeValidacaoException>()
+             .Where(ex => ex.MessagensDeErro.Count == 1 && ex.MessagensDeErro.Contains(ResourceMensagensDeErro.SENHA_ATUAL_INVALIDA));
+    }
+
+    [Fact]
     public async Task Validar_Erro_NovaSenhaEmBranco()
     {
         (var usuario, var senha) = UsuarioBuilder.Contruir();
@@ -59,7 +77,7 @@ public class AlterarSenhaUseCaseTest
     [InlineData(3)]
     [InlineData(4)]
     [InlineData(5)]
-    public async Task Validar_Erro_SenhaAtual_Invalida(int tamanhoSenha)
+    public async Task Validar_Erro_SenhaAtual_Minimo_caracateres(int tamanhoSenha)
     {
         (var usuario, var senha) = UsuarioBuilder.Contruir();
         var useCase = CriarUseCase(usuario);
@@ -78,7 +96,7 @@ public class AlterarSenhaUseCaseTest
            .Where(ex => ex.MessagensDeErro.Count == 1 && ex.MessagensDeErro.Contains(ResourceMensagensDeErro.SENHA_USUARIO_MINIMO_SEIS_CARACTERES));
     }
 
-    private AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
+    private static AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)
     {
         var encriptador = EncriptadorDeSenhaBuilder.Instacia();
         var unidadeTrabalho = UnidadeDeTrabalhoBuilder.Instancia().Construir();

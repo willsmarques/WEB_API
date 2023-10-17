@@ -28,17 +28,16 @@ public static class Bootstrapper
     
     private static void AdicionarChaveAdicionalSenha(IServiceCollection services, IConfiguration configuration)
      {
-        //var section = configuration.GetRequiredSection("Configuracoes:Senha:ChaveAdicionalSenha");
 
-        var section = configuration.GetRequiredSection("Configuracoes:ChaveAdicionalSenha");
+        var section = configuration.GetRequiredSection("Configuracoes:Senha:ChaveAdicionalSenha");
 
         services.AddScoped(option => new EncrepitadorDeSenha(section.Value));
      }
 
      private static void AdicionarTokenJWT(IServiceCollection services, IConfiguration configuration)
      {
-        var sectionTempoDeVida = configuration.GetRequiredSection("Configuracoes:TempoVidaToken");
-        var sectionKey = configuration.GetRequiredSection("Configuracoes:ChaveToken");
+        var sectionTempoDeVida = configuration.GetRequiredSection("Configuracoes:jwt:TempoVidaTokenMinutos");
+        var sectionKey = configuration.GetRequiredSection("Configuracoes:jwt:ChaveToken");
         services.AddScoped(option => new TokenController(int.Parse(sectionTempoDeVida.Value), sectionKey.Value));
      }
 

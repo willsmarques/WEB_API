@@ -22,7 +22,7 @@ public class FiltroDasExceptions : IExceptionFilter
         };
 
     }
-    private void TratarMeuLivroDeReceitasException(ExceptionContext context)
+    private static void TratarMeuLivroDeReceitasException(ExceptionContext context)
     {
         if(context.Exception is ErroDeValidacaoException)
         {
@@ -40,13 +40,13 @@ public class FiltroDasExceptions : IExceptionFilter
         context.Result = new ObjectResult(new RespostaErroJson(erroLogin.Message));
     }
 
-    private void TratarErrosDeValidacaoException(ExceptionContext context)
+    private static void TratarErrosDeValidacaoException(ExceptionContext context)
     {
         var erroDeValidacaoException = context.Exception as ErroDeValidacaoException;
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         context.Result = new ObjectResult(new RespostaErroJson(erroDeValidacaoException.MessagensDeErro));
     }
-    private void LancarErroDesconhecido(ExceptionContext context)
+    private static void LancarErroDesconhecido(ExceptionContext context)
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new RespostaErroJson(ResourceMensagensDeErro.ERRO_DESCONHECIDO));

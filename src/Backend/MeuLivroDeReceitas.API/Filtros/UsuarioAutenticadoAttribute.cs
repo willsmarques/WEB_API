@@ -2,6 +2,7 @@
 using MeuLivroDeReceitas.Comunicacao.Resposta;
 using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
 using MeuLivroDeReceitas.Exceptions;
+using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -22,16 +23,18 @@ public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizatio
 
     public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
     {
-
         try
         {
             var token = TokenNaRequisicao(context);
 
-            var usuario = _tokenControlle.RecuperarEmail(token);
+            var emailusuario = _tokenControlle.RecuperarEmail(token);
+
+            var usuario = await _repositorio.RecuperarPorEmail(emailusuario);
+
 
             if (usuario is null)
             {
-                throw new System.Exception();
+                throw new MeuLivroDeReceitasExeception(string.Empty) ;
 
             }
 
@@ -46,6 +49,7 @@ public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizatio
             UsuarioSemPermissao(context);
 
         }
+
     }
 
     private string TokenNaRequisicao(AuthorizationFilterContext context)
@@ -54,7 +58,7 @@ public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizatio
 
         if (string.IsNullOrWhiteSpace(authorization))
         {
-            throw new System.Exception();
+            throw new MeuLivroDeReceitasExeception(string.Empty);
         }
 
         return authorization["Bearer".Length..].Trim();
