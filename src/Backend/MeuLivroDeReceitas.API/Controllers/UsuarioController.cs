@@ -25,7 +25,7 @@ namespace MeuLivroDeReceitas.API.Controllers
         [HttpPut]
         [Route("alterar-senha")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ServiceFilter(typeof(UsuarioAutenticadoAtribute))]
+        [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
         public async Task<IActionResult> AlterarSenha(
            [FromServices] IAlterarSenhaUseCase useCase,
            [FromBody] RequisicaoAlterarSenhaJson request)

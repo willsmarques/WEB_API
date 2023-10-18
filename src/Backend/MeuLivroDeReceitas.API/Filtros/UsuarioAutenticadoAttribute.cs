@@ -10,12 +10,12 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MeuLivroDeReceitas.API.Filtros;
 
-public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizationFilter
+public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
 {
     private readonly TokenController _tokenControlle;
     private readonly IUsuarioReadOnlyRepositorio _repositorio;
 
-    public UsuarioAutenticadoAtribute(TokenController tokenControlle, IUsuarioReadOnlyRepositorio repositorio)
+    public UsuarioAutenticadoAttribute(TokenController tokenControlle, IUsuarioReadOnlyRepositorio repositorio)
     {
         _tokenControlle = tokenControlle;
         _repositorio = repositorio;
