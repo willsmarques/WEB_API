@@ -12,9 +12,6 @@ namespace MeuLivroDeReceitas.API;
 
 public class Program
 {
-    public Program()
-    {
-    }
 
     public static void Main(string[] args)
     {
