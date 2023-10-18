@@ -34,7 +34,7 @@ public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizatio
 
             if (usuario is null)
             {
-                throw new MeuLivroDeReceitasExeception(string.Empty) ;
+                throw new MeuLivroDeReceitasSystemException(string.Empty) ;
 
             }
 
@@ -52,26 +52,26 @@ public class UsuarioAutenticadoAtribute : AuthorizeAttribute, IAsyncAuthorizatio
 
     }
 
-    private string TokenNaRequisicao(AuthorizationFilterContext context)
+    private static string TokenNaRequisicao(AuthorizationFilterContext context)
     {
         var authorization = context.HttpContext.Request.Headers["Authorization"].ToString();
 
         if (string.IsNullOrWhiteSpace(authorization))
         {
-            throw new MeuLivroDeReceitasExeception(string.Empty);
+            throw new MeuLivroDeReceitasSystemException(string.Empty);
         }
 
         return authorization["Bearer".Length..].Trim();
     }
 
-    private void TokenExpirado(AuthorizationFilterContext context)
+    private static void TokenExpirado(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.TOKEN_EXPIRADO)); 
 
             
     }
 
-    private void UsuarioSemPermissao(AuthorizationFilterContext context)
+    private static void UsuarioSemPermissao(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.USUARIO_SEM_PERMISSAO));
 

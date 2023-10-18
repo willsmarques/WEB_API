@@ -66,7 +66,7 @@ public class AlterarSenhaTokenInvalido:  ControllerBase
     {
         var token = TokenControllerBuilder.TokenExpirado().GerarToken(_usuario.Email);
 
-        Thread.Sleep(1000);
+        await Task.Delay(1000);
 
         var requisicao = RequisicaoAlterarSenhaUsuarioBuilder.Construir();
 

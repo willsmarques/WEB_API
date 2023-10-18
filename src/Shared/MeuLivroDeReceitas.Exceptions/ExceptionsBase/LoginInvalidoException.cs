@@ -3,7 +3,7 @@
 namespace MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 
 [Serializable]
-public class LoginInvalidoException : MeuLivroDeReceitasExeception
+public class LoginInvalidoException : MeuLivroDeReceitasSystemException
 {
     public LoginInvalidoException() : base(ResourceMensagensDeErro.LOGIN_INVALIDO)
     {
