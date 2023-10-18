@@ -11,7 +11,7 @@ public class FiltroDasExceptions : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        if (context.Exception is MeuLivroDeReceitasExeception)
+        if (context.Exception is MeuLivroDeReceitasSystemException)
         {
             TratarMeuLivroDeReceitasException(context);
         }
@@ -19,7 +19,7 @@ public class FiltroDasExceptions : IExceptionFilter
         {
             LancarErroDesconhecido(context);
 
-        };
+        }
 
     }
     private static void TratarMeuLivroDeReceitasException(ExceptionContext context)
