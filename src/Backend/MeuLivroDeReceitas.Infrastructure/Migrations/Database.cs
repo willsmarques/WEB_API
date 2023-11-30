@@ -5,18 +5,18 @@ namespace MeuLivroDeReceitas.Infrastructure.Migrations;
 
 public static class Database
 {
-    public static void CriarDataBase(string conexaoComBancoDados, string nomeDatabase)
+    public static void CriarDatabase(string conexaoComBancoDeDados, string nomeDatabase)
     {
-     using var minhaConexao = new MySqlConnection(conexaoComBancoDados);
-     
-     var parametros = new DynamicParameters();
-     parametros.Add("nome", nomeDatabase);
+        using var minhaConexao = new MySqlConnection(conexaoComBancoDeDados);
 
-        var registro =    minhaConexao.Query("SELECT * FROM information_schema.SCHEMATA WHERE SCHEMA_NAME = @nome", parametros);
-        if (!registro.Any())
+        var parametros = new DynamicParameters();
+        parametros.Add("nome", nomeDatabase);
+
+        var registros = minhaConexao.Query("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @nome", parametros);
+
+        if (!registros.Any())
         {
             minhaConexao.Execute($"CREATE DATABASE {nomeDatabase}");
-
-        }   
+        }
     }
 }

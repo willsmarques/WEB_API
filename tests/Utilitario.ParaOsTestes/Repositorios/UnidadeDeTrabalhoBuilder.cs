@@ -1,4 +1,4 @@
-﻿using MeuLivroDeReceitas.Domain.Repositorio;
+﻿using MeuLivroDeReceitas.Domain.Repositorios;
 using Moq;
 
 namespace Utilitario.ParaOsTestes.Repositorios;
@@ -10,7 +10,7 @@ public class UnidadeDeTrabalhoBuilder
 
     private UnidadeDeTrabalhoBuilder()
     {
-        if (_repositorio == null)
+        if (_repositorio is null)
         {
             _repositorio = new Mock<IUnidadeDeTrabalho>();
         }
@@ -20,7 +20,6 @@ public class UnidadeDeTrabalhoBuilder
     {
         _instance = new UnidadeDeTrabalhoBuilder();
         return _instance;
-
     }
 
     public IUnidadeDeTrabalho Construir()

@@ -1,6 +1,6 @@
 ﻿using MeuLivroDeReceitas.Application.Servicos.Token;
 using MeuLivroDeReceitas.Domain.Entidades;
-using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
+using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using Microsoft.AspNetCore.Http;
 
 namespace MeuLivroDeReceitas.Application.Servicos.UsuarioLogado;
@@ -18,13 +18,14 @@ public class UsuarioLogado : IUsuarioLogado
         _repositorio = repositorio;
     }
 
-
     public async Task<Usuario> RecuperarUsuario()
     {
         var authorization = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString();
+
         var token = authorization["Bearer".Length..].Trim();
 
-        var emailUsuario =  _tokenController.RecuperarEmail(token);
+        var emailUsuario = _tokenController.RecuperarEmail(token);
+
         var usuario = await _repositorio.RecuperarPorEmail(emailUsuario);
 
         return usuario;

@@ -1,4 +1,4 @@
-﻿using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
+﻿using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using Moq;
 
 namespace Utilitario.ParaOsTestes.Repositorios;
@@ -10,7 +10,7 @@ public class UsuarioWriteOnlyRepositorioBuilder
 
     private UsuarioWriteOnlyRepositorioBuilder()
     {
-        if(_repositorio == null)
+        if (_repositorio is null)
         {
             _repositorio = new Mock<IUsuarioWriteOnlyRepositorio>();
         }
@@ -20,13 +20,10 @@ public class UsuarioWriteOnlyRepositorioBuilder
     {
         _instance = new UsuarioWriteOnlyRepositorioBuilder();
         return _instance;
-
     }
 
     public IUsuarioWriteOnlyRepositorio Construir()
     {
         return _repositorio.Object;
     }
-
-
 }

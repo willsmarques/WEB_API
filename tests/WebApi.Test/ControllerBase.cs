@@ -1,7 +1,4 @@
-﻿using FluentAssertions;
-using MeuLivroDeReceitas.API;
-using MeuLivroDeReceitas.Domain.Entidades;
-using MeuLivroDeReceitas.Exceptions;
+﻿using MeuLivroDeReceitas.Exceptions;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Text;

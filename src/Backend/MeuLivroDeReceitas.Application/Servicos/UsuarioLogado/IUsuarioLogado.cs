@@ -3,5 +3,4 @@
 public interface IUsuarioLogado
 {
     Task<Domain.Entidades.Usuario> RecuperarUsuario();
-
 }

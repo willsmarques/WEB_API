@@ -3,6 +3,8 @@ using MeuLivroDeReceitas.Application.Servicos.Token;
 using MeuLivroDeReceitas.Application.UseCase.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Application.UseCase.Usuario.Registrar;
 using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MeuLivroDeReceitas.API;
 

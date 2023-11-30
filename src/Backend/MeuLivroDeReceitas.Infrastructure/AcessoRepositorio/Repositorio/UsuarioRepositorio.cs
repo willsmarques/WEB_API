@@ -1,56 +1,47 @@
 ﻿using MeuLivroDeReceitas.Domain.Entidades;
-using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
+using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio
+namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+
+public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnlyRepositorio, IUsuarioUpdateOnlyRepositorio
 {
-    internal class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio,IUsuarioReadOnlyRepositorio, IUsuarioUpdateOnlyRepositorio
+    private readonly MeuLivroDeReceitasContext _contexto;
+
+    public UsuarioRepositorio(MeuLivroDeReceitasContext contexto)
     {
-        private readonly MeuLivroDeReceitaContext _context;
+        _contexto = contexto;
+    }
 
-        public UsuarioRepositorio(MeuLivroDeReceitaContext contexto)
-        {
-            _context = contexto;
+    public async Task Adicionar(Usuario usuario)
+    {
+        await _contexto.Usuarios.AddAsync(usuario);
+    }
 
-        }
+    public async Task<bool> ExisteUsuarioComEmail(string email)
+    {
+        return await _contexto.Usuarios.AnyAsync(c => c.Email.Equals(email));
+    }
 
-        public async Task Adicionar(Usuario usuario)
-        {
-          await  _context.Usuarios.AddAsync(usuario);
-        }
+    public async Task<Usuario> RecuperarPorEmail(string email)
+    {
+        return await _contexto.Usuarios.AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Email.Equals(email));
+    }
 
-        public async Task<bool> ExisteUsuarioComEmail(string email)
-        {
-           return await _context.Usuarios.AnyAsync(c => c.Email.Equals(email));
-        }
+    public async Task<Usuario> RecuperarPorEmailSenha(string email, string senha)
+    {
+        return await _contexto.Usuarios.AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
+    }
 
-        public async Task<Usuario> RecuperarPorEmail(string email)
-        {
-            return await _context.Usuarios.AsNoTracking()
-                 .FirstOrDefaultAsync(c => c.Email.Equals(email));
-            
-        }
+    public async Task<Usuario> RecuperarPorId(long id)
+    {
+        return await _contexto.Usuarios.FirstOrDefaultAsync(c => c.Id == id);
+    }
 
-        public async Task<Usuario> RecuperarPorEmailSenha(string email, string senha)
-        {
-            return await _context.Usuarios.AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
-        }
-
-        public async Task<Usuario> RecuperarPorId(long id)
-        {
-            return await _context.Usuarios
-                .FirstOrDefaultAsync(c => c.Id == id);
-        }
-
-        public void Update(Usuario usuario)
-        {
-            _context.Usuarios.Update(usuario);
-        }
-
-        void IUsuarioWriteOnlyRepositorio.RecuperarPorId(long id)
-        {
-            throw new NotImplementedException();
-        }
+    public void Update(Usuario usuario)
+    {
+        _contexto.Usuarios.Update(usuario);
     }
 }

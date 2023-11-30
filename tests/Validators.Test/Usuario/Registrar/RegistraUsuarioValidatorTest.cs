@@ -33,7 +33,7 @@ public  class RegistraUsuarioValidatorTest
         var resultado = validator.Validate(requisicao);
 
         resultado.IsValid.Should().BeFalse();
-        resultado.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.NOME_VAZIO_EMBRANCO));
+        resultado.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.NOME_USUARIO_EMBRANCO));
 
     }
 

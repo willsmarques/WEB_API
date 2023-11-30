@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
-using MeuLivroDeReceitas.Application.UseCase.Usuario.AlterarSenha;
-using MeuLivroDeReceitas.Application.UseCase.Usuario.Registrar;
+using MeuLivroDeReceitas.Application.UseCases.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Exceptions;
 using Utilitario.ParaOsTestes.Requisicoes;
 using Xunit;
@@ -19,9 +18,7 @@ public class AlterarSenhaValidatorTest
         var resultado = validator.Validate(requisicao);
 
         resultado.IsValid.Should().BeTrue();
-
     }
-
 
     [Theory]
     [InlineData(1)]
@@ -39,7 +36,6 @@ public class AlterarSenhaValidatorTest
 
         resultado.IsValid.Should().BeFalse();
         resultado.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.SENHA_USUARIO_MINIMO_SEIS_CARACTERES));
-
     }
 
     [Fact]
@@ -54,7 +50,5 @@ public class AlterarSenhaValidatorTest
 
         resultado.IsValid.Should().BeFalse();
         resultado.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO));
-
     }
-
 }

@@ -1,5 +1,5 @@
 ﻿using MeuLivroDeReceitas.Application.Servicos.Token;
-using MeuLivroDeReceitas.Comunicacao.Resposta;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
 using MeuLivroDeReceitas.Exceptions;
 using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.IdentityModel.Tokens;
+using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.API.Filtros;
 
@@ -76,5 +77,10 @@ public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizati
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.USUARIO_SEM_PERMISSAO));
 
 
+    }
+
+    Task IAsyncAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using MeuLivroDeReceitas.API;
 using MeuLivroDeReceitas.Exceptions;
 using System.Net;
 using System.Text.Json;
@@ -50,7 +49,7 @@ public class RegistraUsuarioTeste : ControllerBase
 
         var erro =  respostaData.RootElement.GetProperty("mensagens").EnumerateArray();
 
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.NOME_VAZIO_EMBRANCO));
+        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.NOME_USUARIO_EMBRANCO));
     }
 
 

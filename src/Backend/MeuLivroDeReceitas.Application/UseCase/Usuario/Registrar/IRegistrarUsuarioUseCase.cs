@@ -1,5 +1,5 @@
 ﻿using MeuLivroDeReceitas.Comunicacao.Requisicoes;
-using MeuLivroDeReceitas.Comunicacao.Resposta;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 
 namespace MeuLivroDeReceitas.Application.UseCase.Usuario.Registrar;
 

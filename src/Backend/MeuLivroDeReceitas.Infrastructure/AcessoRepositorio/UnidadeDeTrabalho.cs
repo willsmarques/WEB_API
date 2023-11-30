@@ -1,18 +1,13 @@
-﻿using MeuLivroDeReceitas.Domain.Repositorio;
+﻿using MeuLivroDeReceitas.Domain.Repositorios;
 
 namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 
 public sealed class UnidadeDeTrabalho : IDisposable, IUnidadeDeTrabalho
 {
-    private readonly MeuLivroDeReceitaContext _contexto;
+    private readonly MeuLivroDeReceitasContext _contexto;
     private bool _disposed;
 
-    public void Dispose()
-    {
-        Dispose(true);
-    }
-
-    public UnidadeDeTrabalho(MeuLivroDeReceitaContext contexto)
+    public UnidadeDeTrabalho(MeuLivroDeReceitasContext contexto)
     {
         _contexto = contexto;
     }
@@ -22,13 +17,18 @@ public sealed class UnidadeDeTrabalho : IDisposable, IUnidadeDeTrabalho
         await _contexto.SaveChangesAsync();
     }
 
+    public void Dispose()
+    {
+        Dispose(true);
+    }
+
     private void Dispose(bool disposing)
     {
         if (!_disposed && disposing)
         {
             _contexto.Dispose();
-
         }
+
         _disposed = true;
     }
 }

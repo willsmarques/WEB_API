@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:15237",
-      "sslPort": 44300
+      "applicationUrl": "http://localhost:13845",
+      "sslPort": 44319
     }
   },
   "profiles": {
-    "MeuLivroDeReceitas.API": {
+    "MeuLivroDeReceitas.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7193;http://localhost:5147",
+      "applicationUrl": "https://localhost:7059;http://localhost:5059",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

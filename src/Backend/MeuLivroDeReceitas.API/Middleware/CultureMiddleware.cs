@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MeuLivroDeReceitas.API.Middleware;
+namespace MeuLivroDeReceitas.Api.Middleware;
 
 public class CultureMiddleware
 {
@@ -20,12 +23,12 @@ public class CultureMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        var cultura = new CultureInfo("pt"); 
+        var cultura = new CultureInfo("pt");
 
         if (context.Request.Headers.ContainsKey("Accept-Language"))
         {
             var linguagem = context.Request.Headers["Accept-Language"].ToString();
-
+            
             if (_idiomasSuportados.Any(c => c.Equals(linguagem)))
             {
                 cultura = new CultureInfo(linguagem);
@@ -36,6 +39,5 @@ public class CultureMiddleware
         CultureInfo.CurrentUICulture = cultura;
 
         await _next(context);
-
     }
 }

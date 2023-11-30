@@ -1,8 +1,5 @@
 ﻿using MeuLivroDeReceitas.Application.Servicos.UsuarioLogado;
-using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
 using Moq;
-using Utilitario.ParaOsTestes.Repositorios;
-using Utilitario.ParaOsTestes.Requisicoes;
 
 namespace Utilitario.ParaOsTestes.UsuarioLogado;
 
@@ -13,7 +10,7 @@ public class UsuarioLogadoBuilder
 
     private UsuarioLogadoBuilder()
     {
-        if (_repositorio == null)
+        if (_repositorio is null)
         {
             _repositorio = new Mock<IUsuarioLogado>();
         }
@@ -23,7 +20,6 @@ public class UsuarioLogadoBuilder
     {
         _instance = new UsuarioLogadoBuilder();
         return _instance;
-
     }
 
     public UsuarioLogadoBuilder RecuperarUsuario(MeuLivroDeReceitas.Domain.Entidades.Usuario usuario)

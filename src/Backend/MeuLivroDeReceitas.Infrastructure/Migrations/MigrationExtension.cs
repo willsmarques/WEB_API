@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MeuLivroDeReceitas.Infrastructure.Migrations;
-
-public static class MigrationExtension
+namespace MeuLivroDeReceitas.Infrastructure.Migrations
 {
-    public static void MigrateBancoDeDados(this IApplicationBuilder app)
+    public static class MigrationExtension
     {
-        using var scope = app.ApplicationServices.CreateScope();
-        var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-        runner.ListMigrations();
-        
-        runner.MigrateUp();
+        public static void MigrateBancoDeDados(this IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.CreateScope();
+            var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+            runner.ListMigrations();
+
+            runner.MigrateUp();
+        }
     }
 }

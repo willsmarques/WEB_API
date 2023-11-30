@@ -4,8 +4,8 @@ namespace Utilitario.ParaOsTestes.Criptografia;
 
 public class EncriptadorDeSenhaBuilder
 {
-    public static EncrepitadorDeSenha Instacia()
+    public static EncriptadorDeSenha Instancia()
     {
-        return new EncrepitadorDeSenha("ABCD123");
+        return new EncriptadorDeSenha("ABCD123");
     }
 }

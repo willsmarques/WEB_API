@@ -1,18 +1,16 @@
-﻿using MeuLivroDeReceitas.Application.Servicos.Criptografia;
-using MeuLivroDeReceitas.Application.Servicos.Token;
+﻿using MeuLivroDeReceitas.Application.Servicos.Token;
 
 namespace Utilitario.ParaOsTestes.Token;
 
 public class TokenControllerBuilder
 {
-    public static TokenController Instacia()
+    public static TokenController Instancia()
     {
-        return new TokenController(1000, "MGYpeD04OGNhdVZywqNdSCkqdUVka1tZUH5wb1RmRk8nbGFNYiRyTmI=");
+        return new TokenController(1000, "eHFDZjRrZkJxZ05YVzhzMEVhTkpHT3UyKmIhQGtO");
     }
-
 
     public static TokenController TokenExpirado()
     {
-        return new TokenController(0.0166667, "MGYpeD04OGNhdVZywqNdSCkqdUVka1tZUH5wb1RmRk8nbGFNYiRyTmI=");
+        return new TokenController(0.0166667, "eHFDZjRrZkJxZ05YVzhzMEVhTkpHT3UyKmIhQGtO");
     }
 }

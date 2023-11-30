@@ -2,7 +2,7 @@
 using MeuLivroDeReceitas.Application.Servicos.Criptografia;
 using MeuLivroDeReceitas.Application.Servicos.Token;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
-using MeuLivroDeReceitas.Comunicacao.Resposta;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorio;
 using MeuLivroDeReceitas.Domain.Repositorio.Usuario;
 using MeuLivroDeReceitas.Exceptions;
@@ -46,6 +46,11 @@ public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
         {
             Token = token,
         };
+    }
+
+    Task<RespostaUsuarioRegistradoJson> IRegistrarUsuarioUseCase.Executar(RequisicaoRegistrarUsuarioJson requisicao)
+    {
+        throw new NotImplementedException();
     }
 
     private async Task Validar(RequisicaoRegistrarUsuarioJson requisicao)

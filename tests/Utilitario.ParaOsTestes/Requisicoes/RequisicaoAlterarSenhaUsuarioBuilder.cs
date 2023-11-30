@@ -10,8 +10,5 @@ public class RequisicaoAlterarSenhaUsuarioBuilder
         return new Faker<RequisicaoAlterarSenhaJson>()
             .RuleFor(c => c.SenhaAtual, f => f.Internet.Password(10))
             .RuleFor(c => c.NovaSenha, f => f.Internet.Password(tamanhoSenha));
-
-
     }
-
 }
